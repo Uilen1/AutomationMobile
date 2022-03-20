@@ -7,7 +7,7 @@ Funcionalidade: Validar o registro de um usuário
   Eu quero validar a inserção de um perfil de usuário
 
   Contexto:
-    Dado que  estou na aba de formulários
+#    Dado que  estou na aba de formulários
 
   @SEU_BARRIGA_APPLICATION_CT_001
   Esquema do Cenário: Deve realizar a inserção de um usuário

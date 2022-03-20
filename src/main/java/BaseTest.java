@@ -9,12 +9,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         tags = "@SEU_BARRIGA_APPLICATION_CT_001",
-        features = "features",
-        glue = "model",
+        features = "src/main/resources/features",
+        glue = {"model","hook"},
         monochrome = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         plugin = {
                 "pretty",
+                "summary",
                 "html:target/cucumber"
         }
 )

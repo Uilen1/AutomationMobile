@@ -14,7 +14,7 @@ public class BaseModel {
 
     @Dado("que  estou na aba de formulários")
     public void queEstouNaAbaDeFormulários() {
-        killDriver();
+//        killDriver();
         MobileElement element =  menuMaps.formulario();
         basePage.clickByElement(element);
     }
@@ -23,6 +23,5 @@ public class BaseModel {
     public void finalizoASessão() {
         killDriver();
     }
-
 
 }
