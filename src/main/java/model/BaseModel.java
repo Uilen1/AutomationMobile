@@ -6,6 +6,7 @@ import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import maps.MenuMaps;
+import org.openqa.selenium.By;
 import pages.BasePage;
 
 public class BaseModel {
@@ -14,20 +15,8 @@ public class BaseModel {
 
     @Dado("que  estou na aba de formulários")
     public void queEstouNaAbaDeFormulários() throws InterruptedException {
-//        killDriver();
-//        MobileElement element =  menuMaps.formulario();
-//        basePage.clickByElement(element);
-//        MobileElement element2 =  menuMaps.elementByAcessibilityId("slid");
-//        basePage.clickInSeekBar(element2,0.5,50);
-//        MobileElement element = menuMaps.elementByText("Cliques");
-//        basePage.clickByElement(element);
-//        MobileElement element2 = menuMaps.elementByText("Clique Longo");
-//        basePage.longClickElement(element2);
-//        MobileElement element = menuMaps.elementByText("Alertas");
-//        basePage.clickByElement(element);
-//        MobileElement element2 = menuMaps.elementByText("ALERTA SIMPLES");
-//        basePage.clickByElement(element2);
-//        basePage.tapByCoordinates(100,200);
+        MobileElement element =  menuMaps.formulario();
+        basePage.clickByElement(element);
     }
 
     @Então("finalizo a sessão")

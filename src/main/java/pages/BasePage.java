@@ -11,6 +11,7 @@ import io.appium.java_client.touch.ActionOptions;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import utils.Utils;
 
@@ -25,6 +26,11 @@ public class BasePage extends Utils {
                 longPress(longPressOptions().withElement(element(mobileElement))).
                 perform();
     }
+    public void doubleClick(MobileElement mobileElement){
+        waitVisibilityOfElement(mobileElement);
+        clickByElement(mobileElement);
+        clickByElement(mobileElement);
+    }
 
     public void clickInSeekBar(MobileElement element,Double porcentage, int delta){
         waitVisibilityOfElement(element);
@@ -33,6 +39,20 @@ public class BasePage extends Utils {
         int x = (int) (xInicial + porcentage*(element.getSize().width - 2*delta));
         tapByCoordinates(x,y);
     }
+
+    public void dagAndDrop(By origin, By destiny){
+        MobileElement elementOrigin = getDriver().findElement(origin);
+        MobileElement elementDestiny = getDriver().findElement(destiny);
+
+        new TouchAction(getDriver())
+                .longPress(element(elementOrigin))
+                .moveTo(element(elementDestiny))
+                .release()
+                .perform()
+                ;
+
+    }
+
 
 
     public void tapByCoordinates(int x, int y){
