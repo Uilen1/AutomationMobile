@@ -15,8 +15,12 @@ public class BaseModel {
 
     @Dado("que  estou na aba de formulários")
     public void queEstouNaAbaDeFormulários() throws InterruptedException {
-        MobileElement element =  menuMaps.formulario();
-        basePage.clickByElement(element);
+//        MobileElement element =  menuMaps.formulario();
+//        basePage.clickByElement(element);
+
+        MobileElement element2 = menuMaps.elementByText("SeuBarriga Híbrido");
+        basePage.clickByElement(element2);
+        basePage.changeContext("Web");
     }
 
     @Então("finalizo a sessão")

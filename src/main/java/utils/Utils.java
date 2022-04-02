@@ -5,18 +5,12 @@ import static io.appium.java_client.touch.WaitOptions.*;
 import static io.appium.java_client.touch.offset.PointOption.*;
 
 import constants.Constants;
-import factory.DriverFactory;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.MultiTouchAction;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,11 +19,19 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Utils implements Constants {
 
     Date date = new Date();
     SimpleDateFormat sdf = new SimpleDateFormat("dd_MM_yyyy HH_mm_sss");
+
+    /**
+     * Take a screenShoot the screen of the device
+     *
+     * */
     public void screenShot() throws Exception {
         try {
             File screenShot = getDriver().getScreenshotAs(OutputType.FILE);
@@ -38,7 +40,23 @@ public class Utils implements Constants {
             throw  new Exception("Não foi possível tirar o screeShot da tela");
         }
     }
-
+/**
+ * Change the context of the application between Native_app and WebView.
+ *
+ * */
+    public void changeContext (String contextToChoice){
+        Set<String> contextChoiced = getDriver().getContextHandles();
+        getDriver().context(
+                contextChoiced
+                .stream()
+                .filter(c -> c.contains(contextToChoice.toUpperCase(Locale.ROOT)))
+                .collect(Collectors.toList())
+                .get(0)
+        );
+    }
+/**
+ * This method is used to verify if the element is to present in the DOM
+ * */
     public boolean elementIsPresent(By by) {
            List<MobileElement> elements = getDriver().findElements(by);
            return elements.size() > 0;
