@@ -15,12 +15,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Utils implements Constants {
@@ -40,6 +39,22 @@ public class Utils implements Constants {
             throw  new Exception("Não foi possível tirar o screeShot da tela");
         }
     }
+    /**
+     * Method to get properties from file setup.properties in root path
+     * */
+    public static Properties getProp() {
+        Properties props = new Properties();
+        try {
+            FileInputStream file = new FileInputStream(
+                    "setup.properties");
+            props.load(file);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return props;
+    }
+
+
 /**
  * Change the context of the application between Native_app and WebView.
  *
